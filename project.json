@@ -1,9 +1,3 @@
 {
-  "TemplateName": "boilr-template",
-  "Authors": "Andrew Howden <hello[at]andrewhowden.com>",
-  "Year": "2016",
-  "GithubReference": "littlemanco/boilr-template",
-  "ProjectGoal": "",
-  "SimilarWork": "",
-  "Justification": ""
+  "ProjectNs": "www-example-com"
 }
