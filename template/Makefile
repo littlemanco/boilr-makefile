@@ -26,6 +26,9 @@ PATH_BUILD_CONFIGURATION := $(shell pwd)/build
 TIMESTAMP := $(shell date "+%s")
 
 help: ## Show this menu
-	@echo -e $(ANSI_TITLE)www.andrewhowden.com$(ANSI_OFF)$(ANSI_SUBTITLE)" - Andrew Howden's personal website"$(ANSI_OFF)
+	@echo -e $(ANSI_TITLE){{ ProjectNs }}$(ANSI_OFF)$(ANSI_SUBTITLE)" - FILL_THIS_IN_WITH_SOMETHING_LOGICAL"$(ANSI_OFF)
+	@echo -e "\nUsage: $ make \$${COMMAND} \n"
+	@echo -e "Variables use the \$${VARIABLE} syntax, and are supplied as environment variables before the command. For example, \n"
+	@echo -e "  \$$ VARIABLE="foo" make help\n"
 	@echo -e $(ANSI_TITLE)Commands:$(ANSI_OFF)
 	@grep -E '^[a-zA-Z_-%]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "    \033[32m%-30s\033[0m %s\n", $$1, $$2}'
