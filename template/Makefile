@@ -6,8 +6,13 @@
 
 SHELL := /bin/bash
 
-# http://stackoverflow.com/questions/1404796/how-to-get-the-latest-tag-name-in-current-branch-in-git
-APP_VERSION := $(shell git describe --abbrev=0)
+# App version is the tag attached to this commit, if there is one. If there is not, APP_VERSION is empty. If there are
+# multiple, they are concatenated using the " " (space) character.
+#
+# See http://stackoverflow.com/questions/4545370/how-to-list-all-tags-pointing-to-a-specific-commit-in-git
+# See http://stackoverflow.com/questions/1404796/how-to-get-the-latest-tag-name-in-current-branch-in-git
+APP_VERSION  := $(shell git show-ref --dereference --tags | grep ^`git rev-parse HEAD` | sed -e 's,.* refs/tags/,,' -e 's/\^{}//')
+GIT_HASH     := $(shell git rev-parse --short HEAD)
 
 #PROJECT_NS   := {{ ProjectNs }}
 #CONTAINER_NS := {{ ProjectNs }}
