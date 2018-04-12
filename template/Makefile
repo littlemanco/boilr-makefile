@@ -42,13 +42,16 @@ help: ## Show this menu
 ##
 ## Dev Namespace
 ##
-#dev: ## The dev namespace
+#.PHONY dev
+#dev:
 #	@echo -e $(ANSI_SUBTITLE)"The development namespace."$(ANSI_OFF)
 #
-#dev.mysql: ## Developer related MySQL tasks
+#.PHONY dev.mysql
+#dev.mysql:
 #	@echo -e $(ANSI_SUBTITLE)"The development MySQL namespace."$(ANSI_OFF)
 ## 
 ## The target is namespaced arbitrary with the `.` separator. This allows complex tasks, or sub make files at a given namespace.
+#.PHONY dev.mysql.connect
 #dev.mysql.connect: ## Connect to the database in the docker-compose development environment
 #	cd deploy/docker-compose && \
 #	    docker-compose exec db mysql --user=xx --password=xx --database=xx
