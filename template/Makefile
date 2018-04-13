@@ -37,7 +37,15 @@ help: ## Show this menu
 	@echo -e "  \$$ VARIABLE="foo" make help\n"
 	@echo -e $(ANSI_TITLE)Commands:$(ANSI_OFF)
 	@grep -E '^[a-zA-Z_-%]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "    \033[32m%-30s\033[0m %s\n", $$1, $$2}'
-	
+##
+## Naming Standards
+## 
+##  +-----------+---------------------------------+---------------------------------------------------+
+##  | Name      | Synonyms                        | Meaning                                           |
+##  +-----------+---------------------------------+---------------------------------------------------+
+##  | "shell"   | Connect                         |  Establish an interactive session with a resource |
+##  +-----------+---------------------------------+---------------------------------------------------+
+
 ## Example Tasks
 ##
 ## Dev Namespace
@@ -51,7 +59,8 @@ help: ## Show this menu
 #	@echo -e $(ANSI_SUBTITLE)"The development MySQL namespace."$(ANSI_OFF)
 ## 
 ## The target is namespaced arbitrary with the `.` separator. This allows complex tasks, or sub make files at a given namespace.
+##
 #.PHONY dev.mysql.connect
-#dev.mysql.connect: ## Connect to the database in the docker-compose development environment
+#dev.mysql.shell: ## Connect to the database in the docker-compose development environment
 #	cd deploy/docker-compose && \
 #	    docker-compose exec db mysql --user=xx --password=xx --database=xx
